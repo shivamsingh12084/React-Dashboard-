@@ -23,7 +23,8 @@ import ColorPicker from './pages/ColorPicker';
 import Line from './pages/Charts/Line';
 import Area from './pages/Charts/Area';
 import Bar from './pages/Charts/Bar';
-import Pie from './components/Charts/Pie';
+import Pie from './pages/Charts/Pie'
+import Doughnut from './components/Charts/Pie';
 import Financial from './pages/Charts/Financial';
 import ColorMapping from './pages/Charts/ColorMapping';
 import Pyramid from './pages/Charts/Pyramid';
@@ -33,7 +34,6 @@ import ThemeSettings from './components/ThemeSettings';
 import { useStateContext } from './contexts/ContextProvider';
 
 
-
  
 
 
@@ -41,11 +41,11 @@ import './App.css'
 
 function App() {
 
-    const {activeMenu, setActiveMenu} = useStateContext();
+    const {activeMenu, setActiveMenu, themeSettings, setThemeSettings, currentColor, currentMode} = useStateContext();
    
 
     return (
-        <div>
+        <div className={currentMode === 'Dark' ? 'dark' : ""}>
           <BrowserRouter>
             <div className="flex relative dark:bg-main-dark-bg">
               <div className="fixed right-4 bottom-4" style={{ zIndex: '1000', }}>
@@ -55,8 +55,8 @@ function App() {
                 >
                   <button
                     type="button"
-                    //onClick={() => setThemeSettings(true)}
-                    //style={{ background: currentColor, borderRadius: '50%' }}
+                    onClick={() => setThemeSettings(true)}
+                    style={{ background: currentColor, borderRadius: '50%' }}
                     className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
                   >
                     <FiSettings />
@@ -84,7 +84,7 @@ function App() {
                   <Navbar />
                 </div>
                 <div>
-                  <ThemeSettings />
+                  {themeSettings && <ThemeSettings /> }
     
                   <Routes>
                     {/* dashboard  */}

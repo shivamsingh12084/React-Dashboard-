@@ -28,8 +28,10 @@ import Financial from './pages/Charts/Financial';
 import ColorMapping from './pages/Charts/ColorMapping';
 import Pyramid from './pages/Charts/Pyramid';
 import Stacked from './components/Charts/Stacked';
+import ThemeSettings from './components/ThemeSettings';
 
 import { useStateContext } from './contexts/ContextProvider';
+
 
 
  
@@ -82,6 +84,7 @@ function App() {
                   <Navbar />
                 </div>
                 <div>
+                  <ThemeSettings />
     
                   <Routes>
                     {/* dashboard  */}
@@ -111,6 +114,7 @@ function App() {
     
                   </Routes>
                 </div>
+                
                 <Footer />
               </div>
             </div>
